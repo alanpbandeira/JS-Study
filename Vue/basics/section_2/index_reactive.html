@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>HTML5 boilerplate – all you really need…</title>
+	<link rel="stylesheet" href="css/style.css">
+	<!--[if IE]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+
+  <!-- v-model example -->
+  <!-- <div id="app">
+    <p> <input type="text" v-model="name"></p>
+    <p> {{name}} </p>
+    <p><button v-on:click="reset">reset</button></p>
+  </div> -->
+
+  <!-- computed example -->
+  <div id="app">
+    <button v-on:click="counter++" > Increase </button>
+    <button v-on:click="counter--" > Decrease </button>
+    <button v-on:click="secondCounter++" > Increase second </button>
+    <p>Counter: {{ counter }} | {{ secondCounter }}</p>
+    <p>Counter: {{ result() }} | {{ output }}</p>
+</div>
+
+  <script>
+    new Vue({
+	el:'#app',
+	
+	data: {
+        counter: 0,
+        secondCounter: 0
+    //   name: "alan"
+    },
+    
+    computed: {
+        output: function() {
+            console.log("Computed")
+            return this.counter > 5 ? 'Greater than 5' : 'Smaller than 5'; 
+        }
+    },
+
+    watch: {
+        counter: function(value) {
+            var vm = this;
+            setTimeout(function() {
+                vm.counter = 0;
+            }, 2000);
+        }
+    },
+	
+	methods: {
+	//   reset: function() {
+    //       this.name = "alan"
+    //   }
+        result: function() {
+          console.log("Method")
+          return this.counter > 5 ? 'Greater than 5' : 'Smaller than 5';
+        }
+	  }
+    });
+  </script>
+</body>
+</html>
+
